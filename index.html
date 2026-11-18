@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tableau de bord — Recherche de stage (V3)</title>
+<style>
+  :root{
+    --bg:#f5f6fa;
+    --card:#ffffff;
+    --ink:#0f172a;
+    --muted:#64748b;
+    --line:#e6e9f0;
+    --indigo:#4f46e5;
+    --violet:#8b5cf6;
+    --cyan:#06b6d4;
+    --blue:#0ea5e9;
+    --green:#10b981;
+    --amber:#f59e0b;
+    --red:#ef4444;
+    --slate:#94a3b8;
+    --shadow:0 1px 2px rgba(15,23,42,.04), 0 8px 24px rgba(15,23,42,.06);
+    --radius:16px;
+  }
+  html.dark{
+    --bg:#0b1020;
+    --card:#131a2e;
+    --ink:#e8edf7;
+    --muted:#93a1b8;
+    --line:#243049;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    transition:background .25s,color .25s;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:32px 22px 56px}
+
+  /* ---------- header ---------- */
+  header{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:space-between;margin-bottom:26px}
+  .eyebrow{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo);margin-bottom:8px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(16,185,129,.15)}
+  h1{margin:0;font-size:clamp(26px,3.4vw,40px);line-height:1.1;letter-spacing:-.02em}
+  .sub{margin:8px 0 0;color:var(--muted);font-size:14px}
+  .header-right{display:flex;align-items:center;gap:10px}
+  .date-chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 15px;font-size:13px;color:var(--muted);box-shadow:var(--shadow);white-space:nowrap}
+  .date-chip b{color:var(--ink)}
+  .theme-btn{cursor:pointer;background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:999px;width:40px;height:40px;font-size:17px;box-shadow:var(--shadow);display:grid;place-items:center;transition:transform .15s}
+  .theme-btn:hover{transform:translateY(-1px)}
+
+  /* ---------- cards ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:26px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .kpi::after{content:"";position:absolute;inset:auto 0 0 0;height:4px;background:var(--bar,var(--indigo));opacity:.9}
+  .kpi .label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .kpi .value{font-size:30px;font-weight:800;letter-spacing:-.03em;margin:6px 0 2px;line-height:1}
+  .kpi .hint{font-size:12px;color:var(--muted)}
+  .kpi .hint b{color:var(--ink)}
+
+  .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-bottom:18px}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 20px 18px;box-shadow:var(--shadow);min-width:0;display:flex;flex-direction:column}
+  .card h2{font-size:15px;margin:0 0 2px;letter-spacing:-.01em}
+  .card .note{font-size:12px;color:var(--muted);margin:0 0 16px}
+  .card-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px}
+  .card-head h2{margin:0}
+  .pill{font-size:11px;font-weight:700;color:var(--muted);background:color-mix(in srgb,var(--muted) 10%,transparent);border-radius:999px;padding:4px 9px;white-space:nowrap}
+
+  /* ---------- horizontal bars ---------- */
+  .rows{display:flex;flex-direction:column;gap:11px}
+  .rows.wide .row{grid-template-columns:190px 1fr 56px}
+  .row{display:grid;grid-template-columns:132px 1fr 44px;align-items:center;gap:10px}
+  .row .name{font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row .track{height:11px;background:color-mix(in srgb,var(--muted) 12%,transparent);border-radius:99px;overflow:hidden}
+  .row .fill{display:block;height:100%;width:var(--w,0%);border-radius:99px;background:var(--c,var(--indigo))}
+  .row .num{font-size:12.5px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+  .row.small .name{font-size:12px;color:var(--muted);font-weight:500}
+
+  /* ---------- stacked funnel ---------- */
+  .stack{display:flex;height:34px;border-radius:10px;overflow:hidden;margin:4px 0 16px;background:color-mix(in srgb,var(--muted) 12%,transparent)}
+  .seg{height:100%;position:relative;transition:filter .15s}
+  .seg:hover{filter:brightness(1.12)}
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+  .lg{display:flex;align-items:center;gap:8px;font-size:12px;min-width:0}
+  .lg .sw{width:9px;height:9px;border-radius:3px;flex:none}
+  .lg .n{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums}
+  .lg .t{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  /* ---------- timeline ---------- */
+  .chart{display:flex;align-items:flex-end;gap:8px;height:190px;padding-top:26px;border-bottom:1px solid var(--line)}
+  .bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%;position:relative;min-width:0}
+  .bar .v{font-size:11px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+  .bar .b{width:100%;max-width:44px;border-radius:7px 7px 0 0;background:linear-gradient(180deg,var(--indigo),var(--violet));height:var(--h,3%);min-height:3px}
+  .bar:hover .b{filter:brightness(1.15)}
+  .axis{display:flex;gap:8px;margin-top:8px}
+  .axis span{flex:1;text-align:center;font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  /* ---------- donut ---------- */
+  .donut-wrap{display:flex;align-items:center;gap:22px}
+  .donut{width:150px;height:150px;border-radius:50%;flex:none;position:relative;
+    background:conic-gradient(var(--green) 0 11.05%, var(--indigo) 11.05% 77.91%, var(--slate) 77.91% 100%);
+    -webkit-mask:radial-gradient(farthest-side,transparent 62%,#000 63%);
+            mask:radial-gradient(farthest-side,transparent 62%,#000 63%);
+  }
+  .donut-legend{display:flex;flex-direction:column;gap:12px;min-width:0}
+  .dl{display:flex;align-items:center;gap:9px;font-size:12.5px}
+  .dl .sw{width:10px;height:10px;border-radius:3px;flex:none}
+  .dl b{font-variant-numeric:tabular-nums}
+
+  /* ---------- mini stats ---------- */
+  .mini{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+  .card > .mini{margin-top:auto;padding-top:16px}
+  .mini .m{background:color-mix(in srgb,var(--muted) 7%,transparent);border-radius:11px;padding:11px 12px}
+  .mini .m .v{font-size:18px;font-weight:800;letter-spacing:-.02em}
+  .mini .m .l{font-size:11px;color:var(--muted);margin-top:2px}
+
+  /* ---------- alerts ---------- */
+  .alerts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .alert{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent,var(--amber));border-radius:12px;padding:15px 16px;box-shadow:var(--shadow)}
+  .alert .a-t{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent,var(--amber));margin-bottom:6px}
+  .alert .a-v{font-size:22px;font-weight:800;letter-spacing:-.02em}
+  .alert .a-d{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45}
+
+  footer{margin-top:26px;color:var(--muted);font-size:11.5px;line-height:1.6}
+  footer code{background:color-mix(in srgb,var(--muted) 12%,transparent);padding:1px 5px;border-radius:4px;font-size:11px}
+
+  @media (max-width:1080px){
+    .kpis{grid-template-columns:repeat(3,1fr)}
+    .grid{grid-template-columns:1fr}
+    .grid.three{grid-template-columns:1fr}
+    .alerts{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    .wrap{padding:22px 14px 40px}
+    .kpis{grid-template-columns:1fr 1fr;gap:10px}
+    .kpi .value{font-size:24px}
+    .row{grid-template-columns:96px 1fr 36px}
+    .rows.wide .row{grid-template-columns:112px 1fr 48px}
+    .legend{grid-template-columns:1fr}
+    .alerts{grid-template-columns:1fr}
+    .donut-wrap{flex-direction:column;align-items:flex-start}
+    .chart{gap:4px}
+    .axis{gap:4px}
+    .axis span{font-size:9px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Suivi de candidatures · V3</div>
+      <h1>Tableau de bord de recherche de stage</h1>
+      <p class="sub">507 lignes suivies · 497 entreprises · Allemagne (web &amp; data)</p>
+    </div>
+    <div class="header-right">
+      <div class="date-chip">Données au <b>18/11/2026</b></div>
+      <button class="theme-btn" id="theme" title="Basculer clair / sombre" aria-label="Basculer le thème">◐</button>
+    </div>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi" style="--bar:var(--indigo)">
+      <div class="label">Lignes suivies</div>
+      <div class="value">507</div>
+      <div class="hint"><b>497</b> entreprises distinctes</div>
+    </div>
+    <div class="kpi" style="--bar:var(--violet)">
+      <div class="label">Candidatures parties</div>
+      <div class="value">358</div>
+      <div class="hint"><b>313</b> e-mails · <b>57</b> dépôts formulaire</div>
+    </div>
+    <div class="kpi" style="--bar:var(--blue)">
+      <div class="label">Taux de retour</div>
+      <div class="value">20.9 %</div>
+      <div class="hint"><b>75</b> retours sur 358</div>
+    </div>
+    <div class="kpi" style="--bar:var(--green)">
+      <div class="label">File de travail</div>
+      <div class="value">150</div>
+      <div class="hint">dont <b>98</b> avec une adresse e-mail</div>
+    </div>
+    <div class="kpi" style="--bar:var(--amber)">
+      <div class="label">Sans e-mail</div>
+      <div class="value">112</div>
+      <div class="hint">22.1 % → canal formulaire / portail</div>
+    </div>
+    <div class="kpi" style="--bar:var(--red)">
+      <div class="label">À relancer</div>
+      <div class="value">75</div>
+      <div class="hint">dont <b>45</b> sans retour depuis 14 j</div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <div class="card-head">
+        <h2>Entonnoir des statuts</h2>
+        <span class="pill">507 lignes</span>
+      </div>
+      <p class="note">Répartition brute du tableau de suivi (V3 fusionnée).</p>
+      <div class="stack" id="statusStack"></div>
+      <div class="legend" id="statusLegend"></div>
+      <div style="height:18px"></div>
+      <div class="rows" id="statusRows"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>Ce que 358 candidatures ont donné</h2>
+      </div>
+      <p class="note">Retours = réponses + refus + redirections.</p>
+      <div class="rows">
+        <div class="row" title="358 entreprises contactées"><span class="name">Contactées</span><span class="track"><span class="fill" style="--c:var(--violet);--w:100%"></span></span><span class="num">358</span></div>
+        <div class="row" title="75 retours = 20.9 %"><span class="name">Retours totaux</span><span class="track"><span class="fill" style="--c:var(--blue);--w:20.9%"></span></span><span class="num">75</span></div>
+        <div class="row" title="18 refus"><span class="name">Refus explicites</span><span class="track"><span class="fill" style="--c:var(--red);--w:5.0%"></span></span><span class="num">18</span></div>
+        <div class="row" title="14 redirections"><span class="name">Redirections</span><span class="track"><span class="fill" style="--c:var(--violet);--w:3.9%"></span></span><span class="num">14</span></div>
+        <div class="row" title="43 réponses"><span class="name">Réponses</span><span class="track"><span class="fill" style="--c:var(--green);--w:12.0%"></span></span><span class="num">43</span></div>
+      </div>
+      <div class="mini">
+        <div class="m"><div class="v">57</div><div class="l">dépôts site carrière</div></div>
+        <div class="m"><div class="v">313</div><div class="l">e-mails journalisés</div></div>
+        <div class="m"><div class="v">79.1 %</div><div class="l">sans aucun retour</div></div>
+        <div class="m"><div class="v">5.0 %</div><div class="l">refus explicites</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <div class="card-head">
+        <h2>Canaux de sourcing</h2>
+        <span class="pill">taux de retour</span>
+      </div>
+      <p class="note">Barre = taux de retour · chiffre = retours / envoyées.</p>
+      <div class="rows wide" id="channelRows"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Qualité des adresses e-mail</h2></div>
+      <p class="note">395 lignes ont une adresse ; 112 n'en ont pas.</p>
+      <div class="donut-wrap">
+        <div class="donut" role="img" aria-label="11.0 % nominatives, 66.9 % génériques, 22.1 % sans adresse"></div>
+        <div class="donut-legend">
+          <div class="dl"><span class="sw" style="background:var(--green)"></span> Nominatives <b>56</b> <span style="color:var(--muted)">11.0 %</span></div>
+          <div class="dl"><span class="sw" style="background:var(--indigo)"></span> Génériques <b>339</b> <span style="color:var(--muted)">66.9 %</span></div>
+          <div class="dl"><span class="sw" style="background:var(--slate)"></span> Sans adresse <b>112</b> <span style="color:var(--muted)">22.1 %</span></div>
+        </div>
+      </div>
+      <div class="mini">
+        <div class="m"><div class="v">378</div><div class="l">domaines distincts</div></div>
+        <div class="m"><div class="v">21</div><div class="l">adresses en échec</div></div>
+        <div class="m"><div class="v">5.3 %</div><div class="l">taux de bounce</div></div>
+        <div class="m"><div class="v">112</div><div class="l">à traiter en portail</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom:18px">
+    <div class="card-head">
+      <h2>Rythme d'envoi</h2>
+      <span class="pill">310 contacts du 11 au 18/11 · 84 %</span>
+    </div>
+    <p class="note">E-mails envoyés <b>et</b> candidatures déposées via formulaire / site carrière, par jour.</p>
+    <div style="display:flex;gap:16px;align-items:center;margin:0 0 4px;font-size:12px;color:var(--muted)">
+      <span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--indigo);margin-right:6px"></span>E-mails</span>
+      <span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--green);margin-right:6px"></span>Formulaires / sites carrière</span>
+    </div>
+    <div class="chart" id="timeline"></div>
+    <div class="axis" id="axis"></div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <div class="card-head">
+        <h2>Villes ciblées</h2>
+        <span class="pill">top 9</span>
+      </div>
+      <p class="note">Volume et taux de retour par ville.</p>
+      <div class="rows" id="cityRows"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>Profils visés</h2>
+        <span class="pill">507 lignes</span>
+      </div>
+      <p class="note"> Colonne « Profil » de l'Excel.</p>
+      <div class="rows" id="jobRows"></div>
+    </div>
+  </section>
+
+  <h2 style="font-size:16px;margin:26px 0 14px;letter-spacing:-.01em">Points d'attention</h2>
+  <section class="alerts">
+    <div class="alert" style="--accent:var(--red)">
+      <div class="a-t">Relances</div>
+      <div class="a-v">75</div>
+      <div class="a-d">à envoyer (délai 7 j), dont 45 sans retour depuis plus de 14 j. Dates de relance enregistrées : 0.</div>
+    </div>
+    <div class="alert" style="--accent:var(--amber)">
+      <div class="a-t">Formulaire</div>
+      <div class="a-v">126</div>
+      <div class="a-d">entreprises sans e-mail (112) ou ayant redirigé vers leur site carrière (14) : canal à suivre.</div>
+    </div>
+    <div class="alert" style="--accent:var(--violet)">
+      <div class="a-t">Contacts</div>
+      <div class="a-v">86 %</div>
+      <div class="a-d">des adresses sont génériques (jobs@, careers@…), contre 56 contacts nominatifs à prioriser.</div>
+    </div>
+    <div class="alert" style="--accent:var(--blue)">
+      <div class="a-t">Données</div>
+      <div class="a-v">199</div>
+      <div class="a-d">lignes de bounce pour 21 adresses réelles : doublons à dédupliquer.</div>
+    </div>
+  </section>
+
+  <footer>
+    Sources : <code>candidatures.xlsx</code> (V3 fusionnée), <code>journal_envois.jsonl</code>,
+    <code>bounces.jsonl</code> et les notes de dépôt de formulaire de l'Excel.
+    Généré par <code>generer_tableau_de_bord.py</code> — réexécute-le après chaque mise à jour de l'Excel.
+    Rapport détaillé : <code>RAPPORT_STATISTIQUES_2026-11-18.md</code>.
+  </footer>
+</div>
+
+<script>
+  const statuses = [{"t": "Envoyé", "n": 261, "c": "var(--indigo)"}, {"t": "À vérifier", "n": 97, "c": "var(--amber)"}, {"t": "À préparer", "n": 46, "c": "var(--slate)"}, {"t": "Réponse", "n": 43, "c": "var(--blue)"}, {"t": "Abandon", "n": 21, "c": "color-mix(in srgb,var(--muted) 45%,transparent)"}, {"t": "Refus", "n": 18, "c": "var(--red)"}, {"t": "Redirection", "n": 14, "c": "var(--violet)"}, {"t": "Piste demandée", "n": 4, "c": "var(--cyan)"}, {"t": "Prêt", "n": 3, "c": "var(--green)"}];
+  const channels = [{"t": "Site carrière entreprise", "n": 174, "s": 116, "r": 30, "p": 25.862068965517242}, {"t": "Autre", "n": 124, "s": 57, "r": 13, "p": 22.80701754385965}, {"t": "Recherche web (adresse officielle)", "n": 86, "s": 27, "r": 8, "p": 29.62962962962963}, {"t": "Agrégateurs / job boards", "n": 53, "s": 20, "r": 8, "p": 40.0}, {"t": "LinkedIn", "n": 30, "s": 16, "r": 5, "p": 31.25}, {"t": "Hunter.io", "n": 28, "s": 19, "r": 7, "p": 36.8421052631579}, {"t": "Portails universitaires", "n": 12, "s": 6, "r": 4, "p": 66.66666666666667}];
+  const cities = [{"t": "Berlin", "n": 101, "s": 60, "r": 9, "p": 15.0}, {"t": "Munich", "n": 70, "s": 32, "r": 9, "p": 28.125}, {"t": "Cologne", "n": 38, "s": 22, "r": 8, "p": 36.36363636363637}, {"t": "(vide)", "n": 25, "s": 13, "r": 3, "p": 23.076923076923077}, {"t": "Karlsruhe", "n": 20, "s": 8, "r": 5, "p": 62.5}, {"t": "Dresden", "n": 17, "s": 13, "r": 2, "p": 15.384615384615385}, {"t": "Frankfurt", "n": 17, "s": 8, "r": 4, "p": 50.0}, {"t": "Stuttgart", "n": 14, "s": 6, "r": 5, "p": 83.33333333333333}, {"t": "Hamburg", "n": 14, "s": 3, "r": 2, "p": 66.66666666666667}];
+  const jobs = [{"t": "Profil web", "n": 312}, {"t": "Profil data", "n": 183}, {"t": "Mixte / vide", "n": 12}];
+  const days = [{"d": "31/08", "mail": 5, "form": 0, "n": 5}, {"d": "01/09", "mail": 2, "form": 0, "n": 2}, {"d": "14/09", "mail": 0, "form": 5, "n": 5}, {"d": "05/10", "mail": 34, "form": 0, "n": 34}, {"d": "10/10", "mail": 13, "form": 0, "n": 13}, {"d": "03/11", "mail": 0, "form": 1, "n": 1}, {"d": "11/11", "mail": 50, "form": 0, "n": 50}, {"d": "12/11", "mail": 35, "form": 0, "n": 35}, {"d": "14/11", "mail": 45, "form": 3, "n": 48}, {"d": "15/11", "mail": 33, "form": 4, "n": 37}, {"d": "16/11", "mail": 36, "form": 0, "n": 36}, {"d": "17/11", "mail": 22, "form": 26, "n": 48}, {"d": "18/11", "mail": 38, "form": 18, "n": 56}];
+
+  const $ = (id) => document.getElementById(id);
+  const totalStatus = statuses.reduce((a, b) => a + b.n, 0);
+  $("statusStack").innerHTML = statuses.map(s =>
+    `<div class="seg" title="${s.t} : ${s.n} (${(s.n / totalStatus * 100).toFixed(1)} %)" style="width:${s.n / totalStatus * 100}%;background:${s.c || "var(--indigo)"}"></div>`
+  ).join("");
+  $("statusLegend").innerHTML = statuses.map(s =>
+    `<div class="lg"><span class="sw" style="background:${s.c || "var(--indigo)"}"></span><span class="t">${s.t}</span><span class="n">${s.n}</span></div>`
+  ).join("");
+  const maxStatus = Math.max(...statuses.map(s => s.n));
+  $("statusRows").innerHTML = statuses.map(s =>
+    `<div class="row"><span class="name">${s.t}</span><span class="track"><span class="fill" style="--c:var(--indigo);--w:${(s.n / maxStatus * 100).toFixed(1)}%"></span></span><span class="num">${s.n}</span></div>`
+  ).join("");
+
+  $("channelRows").innerHTML = channels.map(c =>
+    `<div class="row" title="${c.t} : ${c.n} lignes, ${c.s} envoyées, ${c.r} retours">
+      <span class="name">${c.t}</span>
+      <span class="track"><span class="fill" style="--c:${c.p >= 25 ? "var(--green)" : c.p >= 15 ? "var(--indigo)" : "var(--amber)"};--w:${c.p.toFixed(1)}%"></span></span>
+      <span class="num">${c.r}/${c.s}</span>
+    </div>`
+  ).join("");
+
+  $("cityRows").innerHTML = cities.map(c =>
+    `<div class="row" title="${c.t} : ${c.n} lignes, ${c.s} envoyées, ${c.r} retours (${c.p.toFixed(1)} %)">
+      <span class="name">${c.t}</span>
+      <span class="track"><span class="fill" style="--c:${c.p >= 25 ? "var(--green)" : c.p >= 15 ? "var(--indigo)" : "var(--amber)"};--w:${c.p.toFixed(1)}%"></span></span>
+      <span class="num">${c.n}</span>
+    </div>`
+  ).join("");
+
+  const maxJob = Math.max(...jobs.map(j => j.n));
+  $("jobRows").innerHTML = jobs.map(j =>
+    `<div class="row"><span class="name">${j.t}</span><span class="track"><span class="fill" style="--c:var(--indigo);--w:${(j.n / maxJob * 100).toFixed(1)}%"></span></span><span class="num">${j.n}</span></div>`
+  ).join("");
+
+  const maxDay = Math.max(...days.map(d => d.n));
+  $("timeline").innerHTML = days.map(d => {
+    const partMail = d.n ? (d.mail / d.n * 100).toFixed(1) : 0;
+    const fond = `linear-gradient(to top, var(--indigo) 0 ${partMail}%, var(--green) ${partMail}% 100%)`;
+    return `<div class="bar" title="${d.d} : ${d.n} contacts (${d.mail} e-mails + ${d.form} formulaires)">
+      <span class="v">${d.n}</span><span class="b" style="--h:${(d.n / maxDay * 100).toFixed(1)}%;background:${fond}"></span></div>`;
+  }).join("");
+  $("axis").innerHTML = days.map(d => `<span>${d.d}</span>`).join("");
+
+  const root = document.documentElement;
+  const btn = $("theme");
+  try { if (localStorage.getItem("stage-theme") === "dark") root.classList.add("dark"); } catch (e) {}
+  btn.addEventListener("click", () => {
+    root.classList.toggle("dark");
+    try { localStorage.setItem("stage-theme", root.classList.contains("dark") ? "dark" : "light"); } catch (e) {}
+  });
+</script>
+</body>
+</html>
