@@ -181,8 +181,8 @@
     </div>
     <div class="kpi" style="--bar:var(--green)">
       <div class="label">File de travail</div>
-      <div class="value">168</div>
-      <div class="hint">dont <b>101</b> avec une adresse e-mail</div>
+      <div class="value">144</div>
+      <div class="hint">dont <b>89</b> avec une adresse e-mail</div>
     </div>
     <div class="kpi" style="--bar:var(--amber)">
       <div class="label">Sans e-mail</div>
@@ -327,7 +327,7 @@
 </div>
 
 <script>
-  const statuses = [{"t": "Envoyé", "n": 269, "c": "var(--indigo)"}, {"t": "À vérifier", "n": 99, "c": "var(--amber)"}, {"t": "À préparer", "n": 64, "c": "var(--slate)"}, {"t": "Réponse", "n": 48, "c": "var(--blue)"}, {"t": "Refus", "n": 24, "c": "var(--red)"}, {"t": "Abandon", "n": 21, "c": "color-mix(in srgb,var(--muted) 45%,transparent)"}, {"t": "Redirection", "n": 13, "c": "var(--violet)"}, {"t": "Prêt", "n": 3, "c": "var(--green)"}, {"t": "Piste demandée", "n": 2, "c": "var(--cyan)"}];
+  const statuses = [{"t": "Envoyé", "n": 269, "c": "var(--indigo)"}, {"t": "À vérifier", "n": 93, "c": "var(--amber)"}, {"t": "Réponse", "n": 48, "c": "var(--blue)"}, {"t": "À préparer", "n": 46, "c": "var(--slate)"}, {"t": "Abandon", "n": 45, "c": "color-mix(in srgb,var(--muted) 45%,transparent)"}, {"t": "Refus", "n": 24, "c": "var(--red)"}, {"t": "Redirection", "n": 13, "c": "var(--violet)"}, {"t": "Prêt", "n": 3, "c": "var(--green)"}, {"t": "Piste demandée", "n": 2, "c": "var(--cyan)"}];
   const channels = [{"t": "Site carrière entreprise", "n": 182, "s": 116, "r": 33, "p": 28.448275862068964}, {"t": "Autre", "n": 152, "s": 62, "r": 18, "p": 29.032258064516128}, {"t": "Recherche web (adresse officielle)", "n": 86, "s": 29, "r": 8, "p": 27.586206896551722}, {"t": "Agrégateurs / job boards", "n": 53, "s": 21, "r": 9, "p": 42.857142857142854}, {"t": "LinkedIn", "n": 30, "s": 16, "r": 5, "p": 31.25}, {"t": "Hunter.io", "n": 28, "s": 19, "r": 8, "p": 42.10526315789474}, {"t": "Portails universitaires", "n": 12, "s": 6, "r": 4, "p": 66.66666666666667}];
   const cities = [{"t": "Berlin", "n": 110, "s": 63, "r": 13, "p": 20.634920634920636}, {"t": "Munich", "n": 74, "s": 30, "r": 10, "p": 33.333333333333336}, {"t": "Cologne", "n": 38, "s": 22, "r": 9, "p": 40.90909090909091}, {"t": "(vide)", "n": 25, "s": 14, "r": 4, "p": 28.571428571428573}, {"t": "Karlsruhe", "n": 20, "s": 8, "r": 6, "p": 75.0}, {"t": "Dresden", "n": 17, "s": 15, "r": 2, "p": 13.333333333333334}, {"t": "Frankfurt", "n": 17, "s": 7, "r": 5, "p": 71.42857142857143}, {"t": "Hamburg", "n": 15, "s": 4, "r": 3, "p": 75.0}, {"t": "Stuttgart", "n": 14, "s": 6, "r": 5, "p": 83.33333333333333}];
   const jobs = [{"t": "Profil web", "n": 329}, {"t": "Profil data", "n": 202}, {"t": "Mixte / vide", "n": 12}];
