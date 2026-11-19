@@ -151,6 +151,14 @@
 /* Dernier jour actif : toujours mis en avant, quel que soit le jour. */
 .bar.last .v{color:var(--indigo);font-weight:800}
 .bar.last .b{outline:2px solid var(--amber);outline-offset:1px}
+/* Dépôts journalisés via formulaire / LinkedIn. */
+.subs{display:flex;flex-direction:column;gap:9px}
+.sub{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:color-mix(in srgb,var(--muted) 6%,transparent)}
+.s-e{font-size:13px;font-weight:700;flex:1;min-width:180px}
+.s-d{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.s-s{font-size:11px;font-weight:800;color:var(--green);background:color-mix(in srgb,var(--green) 12%,transparent);border-radius:999px;padding:3px 9px}
+.s-l{font-size:12px;font-weight:700;color:var(--indigo);text-decoration:none}
+.s-l:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -279,6 +287,17 @@
     <div class="axis" id="axis"></div>
   </section>
 
+  <section class="card" style="margin-bottom:18px">
+    <div class="card-head">
+      <h2>Candidatures soumises via LinkedIn</h2>
+      <span class="pill">1 dépôt(s)</span>
+    </div>
+    <p class="note">Dépôts officiels journalisés, hors classeur (non comptés dans les indicateurs ci-dessus). Seules les données publiques sont affichées.</p>
+      <div class="subs">
+        <div class="sub"><span class="s-e">STACKIT / Schwarz Digits</span><span class="s-d">19/11/2026</span><span class="s-s">SOUMIS</span><a class="s-l" href="https://schwarz-digits.de/en/jobsearch/hr/mandatory-internship-practical-semester-software-engineering-stackit-m-f-d-GT5243" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+      </div>
+  </section>
+
   <section class="grid">
     <div class="card">
       <div class="card-head">
@@ -325,7 +344,8 @@
 
   <footer>
     Sources : <code>candidatures.xlsx</code> (V3 fusionnée), <code>journal_envois.jsonl</code>,
-    <code>bounces.jsonl</code> et les notes de dépôt de formulaire de l'Excel.
+    <code>bounces.jsonl</code>, <code>soumissions_linkedin_*.jsonl</code> (dépôts hors classeur)
+    et les notes de dépôt de formulaire de l'Excel.
     Généré par <code>generer_tableau_de_bord.py</code> — réexécute-le après chaque mise à jour de l'Excel.
     Rapport détaillé : <code>RAPPORT_STATISTIQUES_2026-11-18.md</code>.
   </footer>
