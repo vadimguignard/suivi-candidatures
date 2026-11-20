@@ -147,6 +147,25 @@
     .axis span{font-size:9px}
   }
 </style>
+<style>
+/* Dernier jour actif : toujours mis en avant, quel que soit le jour. */
+.bar.last .v{color:var(--indigo);font-weight:800}
+.bar.last .b{outline:2px solid var(--amber);outline-offset:1px}
+/* Dépôts journalisés via formulaire / LinkedIn. */
+.subs{display:flex;flex-direction:column;gap:9px}
+.sub{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:color-mix(in srgb,var(--muted) 6%,transparent)}
+.s-e{font-size:13px;font-weight:700;flex:1;min-width:180px}
+.s-d{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.s-s{font-size:11px;font-weight:800;color:var(--green);background:color-mix(in srgb,var(--green) 12%,transparent);border-radius:999px;padding:3px 9px}
+.s-l{font-size:12px;font-weight:700;color:var(--indigo);text-decoration:none}
+.s-l:hover{text-decoration:underline}
+/* Filtre semaine, en haut a droite de la carte. */
+.head-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.semaine{font:inherit;font-size:12px;font-weight:700;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 11px;cursor:pointer;box-shadow:var(--shadow)}
+.subdetails{margin-top:14px;font-size:12px;color:var(--muted)}
+.subdetails summary{cursor:pointer;font-weight:700;color:var(--violet)}
+.subdetails .subs{margin-top:10px}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -158,7 +177,7 @@
       <p class="sub">545 lignes suivies · 531 entreprises · Allemagne (web &amp; data)</p>
     </div>
     <div class="header-right">
-      <div class="date-chip">Données au <b>19/11/2026</b></div>
+      <div class="date-chip">Données au <b>20/11/2026</b></div>
       <button class="theme-btn" id="theme" title="Basculer clair / sombre" aria-label="Basculer le thème">◐</button>
     </div>
   </header>
@@ -181,8 +200,8 @@
     </div>
     <div class="kpi" style="--bar:var(--green)">
       <div class="label">File de travail</div>
-      <div class="value">125</div>
-      <div class="hint">dont <b>70</b> avec une adresse e-mail</div>
+      <div class="value">124</div>
+      <div class="hint">dont <b>69</b> avec une adresse e-mail</div>
     </div>
     <div class="kpi" style="--bar:var(--amber)">
       <div class="label">Sans e-mail</div>
@@ -263,15 +282,41 @@
   <section class="card" style="margin-bottom:18px">
     <div class="card-head">
       <h2>Rythme d'envoi</h2>
-      <span class="pill">350 contacts du 11 au 18/11 · 85 %</span>
+      <div class="head-actions">
+        <span class="pill" id="fenetre">276 contacts du 14/11 au 20/11 · 66 %</span>
+        <select class="semaine" id="semaine" aria-label="Choisir une semaine"></select>
+      </div>
     </div>
-    <p class="note">E-mails envoyés <b>et</b> candidatures déposées via formulaire / site carrière, par jour.</p>
-    <div style="display:flex;gap:16px;align-items:center;margin:0 0 4px;font-size:12px;color:var(--muted)">
+    <p class="note">E-mails, formulaires / sites carrière et annonces LinkedIn dans le même graphique. Choisis une semaine en haut à droite.</p>
+    <div style="display:flex;gap:16px;align-items:center;margin:0 0 4px;font-size:12px;color:var(--muted);flex-wrap:wrap">
       <span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--indigo);margin-right:6px"></span>E-mails</span>
       <span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--green);margin-right:6px"></span>Formulaires / sites carrière</span>
+      <span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--violet);margin-right:6px"></span>Annonces LinkedIn</span>
     </div>
     <div class="chart" id="timeline"></div>
     <div class="axis" id="axis"></div>
+    <details class="subdetails">
+      <summary>17 annonce(s) LinkedIn — détail</summary>
+      <div class="subs">
+        <div class="sub"><span class="s-e">Scalefree</span><span class="s-d">20/11/2026</span><span class="s-s">SOUMIS</span><a class="s-l" href="https://www.linkedin.com/jobs/view/4490422478/" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">Google Hambourg</span><span class="s-d">20/11/2026</span><span class="s-s">SOUMIS</span><a class="s-l" href="https://www.linkedin.com/jobs/view/4477573507/" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">Geberit Data Engineering</span><span class="s-d">20/11/2026</span><span class="s-s">SOUMIS</span><a class="s-l" href="https://www.linkedin.com/jobs/view/4486375554/" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">Geberit Analytics</span><span class="s-d">20/11/2026</span><span class="s-s">SOUMIS</span><a class="s-l" href="https://www.linkedin.com/jobs/view/4474976965/" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">FORVIA HELLA</span><span class="s-d">20/11/2026</span><span class="s-s">SOUMIS</span><a class="s-l" href="https://www.linkedin.com/jobs/view/4461897663/" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">STACKIT / Schwarz Digits</span><span class="s-d">19/11/2026</span><span class="s-s">SOUMIS</span><a class="s-l" href="https://schwarz-digits.de/en/jobsearch/hr/mandatory-internship-practical-semester-software-engineering-stackit-m-f-d-GT5243" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">Munich Re</span><span class="s-d">17/11/2026</span><span class="s-s">Réponse</span><a class="s-l" href="https://de.linkedin.com/jobs/view/intern-llm-access-and-agent-platform-at-munich-re-4488874837" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">Cloover</span><span class="s-d">17/11/2026</span><span class="s-s">Envoyé</span><a class="s-l" href="https://de.linkedin.com/jobs/view/ai-engineering-automation-intern-on-site-at-cloover-4489629460" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">BNP Paribas</span><span class="s-d">17/11/2026</span><span class="s-s">Envoyé</span><a class="s-l" href="https://de.linkedin.com/jobs/view/intern-all-genders-in-the-global-markets-data-ai-lab-at-bnp-paribas-corporate-institutional-banking-at-bnp-paribas-4489496534" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">Avelios Medical</span><span class="s-d">17/11/2026</span><span class="s-s">Envoyé</span><a class="s-l" href="https://de.linkedin.com/jobs/view/intern-machine-learning-all-genders-at-avelios-medical-4444527141" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">revel8</span><span class="s-d">15/11/2026</span><span class="s-s">Réponse</span><a class="s-l" href="https://de.linkedin.com/jobs/view/applied-ai-engineer-intern-all-genders-at-revel8-4473296045" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">Webfleet</span><span class="s-d"></span><span class="s-s">Abandon</span><a class="s-l" href="https://de.linkedin.com/jobs/view/internship-embedded-software-engineer-at-webfleet-4487814098" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">NVIDIA</span><span class="s-d"></span><span class="s-s">Abandon</span><a class="s-l" href="https://de.linkedin.com/jobs/view/image-and-data-processing-libraries-intern-at-nvidia-4471985038" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">NVIDIA</span><span class="s-d"></span><span class="s-s">Abandon</span><a class="s-l" href="https://de.linkedin.com/jobs/view/developer-technology-engineering-intern-compute-performance-at-nvidia-4480745169" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">Marsh (Oliver Wyman)</span><span class="s-d"></span><span class="s-s">Abandon</span><a class="s-l" href="https://de.linkedin.com/jobs/view/oliver-wyman-data-analytics-consulting-intern-m-f-d-berlin-at-marsh-agency-4490007275" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">Huawei</span><span class="s-d"></span><span class="s-s">Abandon</span><a class="s-l" href="https://de.linkedin.com/jobs/view/intern-ai-driven-audio-at-huawei-4487964364" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+        <div class="sub"><span class="s-e">Cadence Design Systems</span><span class="s-d"></span><span class="s-s">Abandon</span><a class="s-l" href="https://de.linkedin.com/jobs/view/intern-agentic-ai-workflow-development-validation-for-digital-design-f-m-d-at-cadence-4488691382" target="_blank" rel="noopener noreferrer">Voir l’offre &#8599;</a></div>
+      </div>
+    </details>
   </section>
 
   <section class="grid">
@@ -320,18 +365,19 @@
 
   <footer>
     Sources : <code>candidatures.xlsx</code> (V3 fusionnée), <code>journal_envois.jsonl</code>,
-    <code>bounces.jsonl</code> et les notes de dépôt de formulaire de l'Excel.
+    <code>bounces.jsonl</code>, <code>soumissions_linkedin_*.jsonl</code> (dépôts hors classeur)
+    et les notes de dépôt de formulaire de l'Excel.
     Généré par <code>generer_tableau_de_bord.py</code> — réexécute-le après chaque mise à jour de l'Excel.
     Rapport détaillé : <code>RAPPORT_STATISTIQUES_2026-11-18.md</code>.
   </footer>
 </div>
 
 <script>
-  const statuses = [{"t": "Envoyé", "n": 276, "c": "var(--indigo)"}, {"t": "À vérifier", "n": 90, "c": "var(--amber)"}, {"t": "Réponse", "n": 55, "c": "var(--blue)"}, {"t": "Abandon", "n": 45, "c": "color-mix(in srgb,var(--muted) 45%,transparent)"}, {"t": "Refus", "n": 28, "c": "var(--red)"}, {"t": "À préparer", "n": 28, "c": "var(--slate)"}, {"t": "Redirection", "n": 15, "c": "var(--violet)"}, {"t": "Prêt", "n": 5, "c": "var(--green)"}, {"t": "Piste demandée", "n": 2, "c": "var(--cyan)"}, {"t": "A préparer", "n": 1, "c": "var(--indigo)"}];
+  const statuses = [{"t": "Envoyé", "n": 276, "c": "var(--indigo)"}, {"t": "À vérifier", "n": 93, "c": "var(--amber)"}, {"t": "Réponse", "n": 55, "c": "var(--blue)"}, {"t": "Abandon", "n": 46, "c": "color-mix(in srgb,var(--muted) 45%,transparent)"}, {"t": "Refus", "n": 28, "c": "var(--red)"}, {"t": "À préparer", "n": 27, "c": "var(--slate)"}, {"t": "Redirection", "n": 15, "c": "var(--violet)"}, {"t": "Piste demandée", "n": 2, "c": "var(--cyan)"}, {"t": "Prêt", "n": 2, "c": "var(--green)"}, {"t": "A préparer", "n": 1, "c": "var(--slate)"}];
   const channels = [{"t": "Site carrière entreprise", "n": 182, "s": 111, "r": 38, "p": 34.234234234234236}, {"t": "Autre", "n": 154, "s": 62, "r": 18, "p": 29.032258064516128}, {"t": "Recherche web (adresse officielle)", "n": 86, "s": 42, "r": 14, "p": 33.333333333333336}, {"t": "Agrégateurs / job boards", "n": 53, "s": 21, "r": 9, "p": 42.857142857142854}, {"t": "LinkedIn", "n": 30, "s": 16, "r": 5, "p": 31.25}, {"t": "Hunter.io", "n": 28, "s": 17, "r": 10, "p": 58.8235294117647}, {"t": "Portails universitaires", "n": 12, "s": 7, "r": 4, "p": 57.142857142857146}];
   const cities = [{"t": "Berlin", "n": 111, "s": 62, "r": 15, "p": 24.193548387096776}, {"t": "Munich", "n": 74, "s": 31, "r": 10, "p": 32.25806451612903}, {"t": "Cologne", "n": 38, "s": 21, "r": 11, "p": 52.38095238095238}, {"t": "(vide)", "n": 25, "s": 14, "r": 5, "p": 35.714285714285715}, {"t": "Karlsruhe", "n": 20, "s": 8, "r": 7, "p": 87.5}, {"t": "Dresden", "n": 17, "s": 14, "r": 3, "p": 21.428571428571427}, {"t": "Frankfurt", "n": 17, "s": 8, "r": 5, "p": 62.5}, {"t": "Hamburg", "n": 15, "s": 5, "r": 4, "p": 80.0}, {"t": "Stuttgart", "n": 14, "s": 6, "r": 5, "p": 83.33333333333333}];
   const jobs = [{"t": "Profil web", "n": 330}, {"t": "Profil data", "n": 202}, {"t": "Mixte / vide", "n": 13}];
-  const days = [{"d": "31/08", "mail": 5, "form": 0, "n": 5}, {"d": "01/09", "mail": 2, "form": 0, "n": 2}, {"d": "14/09", "mail": 0, "form": 5, "n": 5}, {"d": "05/10", "mail": 34, "form": 0, "n": 34}, {"d": "10/10", "mail": 13, "form": 0, "n": 13}, {"d": "03/11", "mail": 0, "form": 1, "n": 1}, {"d": "11/11", "mail": 50, "form": 0, "n": 50}, {"d": "12/11", "mail": 35, "form": 0, "n": 35}, {"d": "14/11", "mail": 45, "form": 3, "n": 48}, {"d": "15/11", "mail": 33, "form": 4, "n": 37}, {"d": "16/11", "mail": 36, "form": 0, "n": 36}, {"d": "17/11", "mail": 22, "form": 26, "n": 48}, {"d": "18/11", "mail": 54, "form": 21, "n": 75}, {"d": "19/11", "mail": 20, "form": 1, "n": 21}];
+  const days = [{"d": "31/08", "mail": 5, "form": 0, "lien": 0, "n": 5, "w": "31/08"}, {"d": "01/09", "mail": 2, "form": 0, "lien": 0, "n": 2, "w": "31/08"}, {"d": "14/09", "mail": 0, "form": 5, "lien": 0, "n": 5, "w": "14/09"}, {"d": "05/10", "mail": 34, "form": 0, "lien": 0, "n": 34, "w": "05/10"}, {"d": "10/10", "mail": 13, "form": 0, "lien": 0, "n": 13, "w": "05/10"}, {"d": "03/11", "mail": 0, "form": 1, "lien": 0, "n": 1, "w": "02/11"}, {"d": "11/11", "mail": 50, "form": 0, "lien": 0, "n": 50, "w": "09/11"}, {"d": "12/11", "mail": 35, "form": 0, "lien": 0, "n": 35, "w": "09/11"}, {"d": "14/11", "mail": 45, "form": 3, "lien": 0, "n": 48, "w": "09/11"}, {"d": "15/11", "mail": 33, "form": 4, "lien": 1, "n": 38, "w": "09/11"}, {"d": "16/11", "mail": 36, "form": 0, "lien": 0, "n": 36, "w": "16/11"}, {"d": "17/11", "mail": 22, "form": 26, "lien": 4, "n": 52, "w": "16/11"}, {"d": "18/11", "mail": 54, "form": 21, "lien": 0, "n": 75, "w": "16/11"}, {"d": "19/11", "mail": 20, "form": 1, "lien": 1, "n": 22, "w": "16/11"}, {"d": "20/11", "mail": 0, "form": 0, "lien": 5, "n": 5, "w": "16/11"}];
 
   const $ = (id) => document.getElementById(id);
   const totalStatus = statuses.reduce((a, b) => a + b.n, 0);
@@ -343,7 +389,7 @@
   ).join("");
   const maxStatus = Math.max(...statuses.map(s => s.n));
   $("statusRows").innerHTML = statuses.map(s =>
-    `<div class="row"><span class="name">${s.t}</span><span class="track"><span class="fill" style="--c:var(--indigo);--w:${(s.n / maxStatus * 100).toFixed(1)}%"></span></span><span class="num">${s.n}</span></div>`
+    `<div class="row"><span class="name">${s.t}</span><span class="track"><span class="fill" style="--c:${s.c};--w:${(s.n / maxStatus * 100).toFixed(1)}%"></span></span><span class="num">${s.n}</span></div>`
   ).join("");
 
   $("channelRows").innerHTML = channels.map(c =>
@@ -367,14 +413,32 @@
     `<div class="row"><span class="name">${j.t}</span><span class="track"><span class="fill" style="--c:var(--indigo);--w:${(j.n / maxJob * 100).toFixed(1)}%"></span></span><span class="num">${j.n}</span></div>`
   ).join("");
 
-  const maxDay = Math.max(...days.map(d => d.n));
-  $("timeline").innerHTML = days.map(d => {
-    const partMail = d.n ? (d.mail / d.n * 100).toFixed(1) : 0;
-    const fond = `linear-gradient(to top, var(--indigo) 0 ${partMail}%, var(--green) ${partMail}% 100%)`;
-    return `<div class="bar" title="${d.d} : ${d.n} contacts (${d.mail} e-mails + ${d.form} formulaires)">
-      <span class="v">${d.n}</span><span class="b" style="--h:${(d.n / maxDay * 100).toFixed(1)}%;background:${fond}"></span></div>`;
-  }).join("");
-  $("axis").innerHTML = days.map(d => `<span>${d.d}</span>`).join("");
+  const semaine = $("semaine");
+  const semaines = [...new Set(days.map(d => d.w))];
+  semaine.innerHTML = '<option value="">Toutes les semaines</option>' +
+    semaines.map(w => `<option value="${w}">Semaine du ${w}</option>`).join("");
+
+  function rendreRythme() {
+    const choix = semaine.value;
+    const visibles = choix ? days.filter(d => d.w === choix) : days;
+    const maxDay = Math.max(1, ...visibles.map(d => d.n));
+    $("timeline").innerHTML = visibles.map((d, i) => {
+      const pMail = d.n ? (d.mail / d.n * 100).toFixed(1) : 0;
+      const pForm = d.n ? ((d.mail + d.form) / d.n * 100).toFixed(1) : 0;
+      const fond = `linear-gradient(to top, var(--indigo) 0 ${pMail}%, var(--green) ${pMail}% ${pForm}%, var(--violet) ${pForm}% 100%)`;
+      const dernier = i === visibles.length - 1 ? " last" : "";
+      const detail = `${d.mail} e-mails + ${d.form} formulaires + ${d.lien || 0} LinkedIn`;
+      return `<div class="bar${dernier}" title="${d.d} : ${d.n} contacts (${detail})${dernier ? " — dernier jour affiché" : ""}">
+        <span class="v">${d.n}</span><span class="b" style="--h:${(d.n / maxDay * 100).toFixed(1)}%;background:${fond}"></span></div>`;
+    }).join("");
+    $("axis").innerHTML = visibles.map(d => `<span>${d.d}</span>`).join("");
+    const total = visibles.reduce((a, d) => a + d.n, 0);
+    $("fenetre").textContent = choix
+      ? `${total} contacts — semaine du ${choix}`
+      : "276 contacts du 14/11 au 20/11 · 66 %";
+  }
+  semaine.addEventListener("change", rendreRythme);
+  rendreRythme();
 
   const root = document.documentElement;
   const btn = $("theme");
