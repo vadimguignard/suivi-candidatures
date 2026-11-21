@@ -101,7 +101,7 @@
   /* ---------- donut ---------- */
   .donut-wrap{display:flex;align-items:center;gap:22px}
   .donut{width:150px;height:150px;border-radius:50%;flex:none;position:relative;
-    background:conic-gradient(var(--green) 0 11.74%, var(--indigo) 11.74% 78.84%, var(--slate) 78.84% 100%);
+    background:conic-gradient(var(--green) 0 11.66%, var(--indigo) 11.66% 80.13%, var(--slate) 80.13% 100%);
     -webkit-mask:radial-gradient(farthest-side,transparent 62%,#000 63%);
             mask:radial-gradient(farthest-side,transparent 62%,#000 63%);
   }
@@ -174,10 +174,10 @@
     <div>
       <div class="eyebrow"><span class="dot"></span> Suivi de candidatures · V3</div>
       <h1>Tableau de bord de recherche de stage</h1>
-      <p class="sub">605 lignes suivies · 591 entreprises · Allemagne (web &amp; data)</p>
+      <p class="sub">609 lignes suivies · 595 entreprises · Allemagne (web &amp; data)</p>
     </div>
     <div class="header-right">
-      <div class="date-chip">Données au <b>20/11/2026</b></div>
+      <div class="date-chip">Données au <b>21/11/2026</b></div>
       <button class="theme-btn" id="theme" title="Basculer clair / sombre" aria-label="Basculer le thème">◐</button>
     </div>
   </header>
@@ -185,32 +185,32 @@
   <section class="kpis">
     <div class="kpi" style="--bar:var(--indigo)">
       <div class="label">Lignes suivies</div>
-      <div class="value">605</div>
-      <div class="hint"><b>591</b> entreprises distinctes</div>
+      <div class="value">609</div>
+      <div class="hint"><b>595</b> entreprises distinctes</div>
     </div>
     <div class="kpi" style="--bar:var(--violet)">
       <div class="label">Candidatures parties</div>
-      <div class="value">395</div>
-      <div class="hint"><b>349</b> e-mails · <b>62</b> dépôts formulaire · entreprises distinctes dédupliquées</div>
+      <div class="value">402</div>
+      <div class="hint"><b>356</b> e-mails · <b>62</b> dépôts formulaire · entreprises distinctes dédupliquées</div>
     </div>
     <div class="kpi" style="--bar:var(--blue)">
       <div class="label">Taux de retour</div>
-      <div class="value">25.1 %</div>
-      <div class="hint"><b>99</b> retours sur 395</div>
+      <div class="value">26.4 %</div>
+      <div class="hint"><b>106</b> retours sur 402</div>
     </div>
     <div class="kpi" style="--bar:var(--green)">
       <div class="label">File de travail</div>
-      <div class="value">184</div>
-      <div class="hint">dont <b>129</b> avec une adresse e-mail</div>
+      <div class="value">181</div>
+      <div class="hint">dont <b>133</b> avec une adresse e-mail</div>
     </div>
     <div class="kpi" style="--bar:var(--amber)">
       <div class="label">Sans e-mail</div>
-      <div class="value">128</div>
-      <div class="hint">21.2 % → canal formulaire / portail</div>
+      <div class="value">121</div>
+      <div class="hint">19.9 % → canal formulaire / portail</div>
     </div>
     <div class="kpi" style="--bar:var(--red)">
       <div class="label">À relancer</div>
-      <div class="value">96</div>
+      <div class="value">123</div>
       <div class="hint">dont <b>45</b> sans retour depuis 14 j</div>
     </div>
   </section>
@@ -219,7 +219,7 @@
     <div class="card">
       <div class="card-head">
         <h2>Entonnoir des statuts</h2>
-        <span class="pill">605 lignes</span>
+        <span class="pill">609 lignes</span>
       </div>
       <p class="note">Répartition brute du tableau de suivi (V3 fusionnée).</p>
       <div class="stack" id="statusStack"></div>
@@ -230,21 +230,21 @@
 
     <div class="card">
       <div class="card-head">
-        <h2>Ce que 395 candidatures ont donné</h2>
+        <h2>Ce que 402 candidatures ont donné</h2>
       </div>
       <p class="note">Retours = réponses + refus + redirections.</p>
       <div class="rows">
-        <div class="row" title="395 entreprises contactées"><span class="name">Contactées</span><span class="track"><span class="fill" style="--c:var(--violet);--w:100%"></span></span><span class="num">395</span></div>
-        <div class="row" title="99 retours = 25.1 %"><span class="name">Retours totaux</span><span class="track"><span class="fill" style="--c:var(--blue);--w:25.1%"></span></span><span class="num">99</span></div>
-        <div class="row" title="28 refus"><span class="name">Refus explicites</span><span class="track"><span class="fill" style="--c:var(--red);--w:7.1%"></span></span><span class="num">28</span></div>
-        <div class="row" title="15 redirections"><span class="name">Redirections</span><span class="track"><span class="fill" style="--c:var(--violet);--w:3.8%"></span></span><span class="num">15</span></div>
-        <div class="row" title="56 réponses"><span class="name">Réponses</span><span class="track"><span class="fill" style="--c:var(--green);--w:14.2%"></span></span><span class="num">56</span></div>
+        <div class="row" title="402 entreprises contactées"><span class="name">Contactées</span><span class="track"><span class="fill" style="--c:var(--violet);--w:100%"></span></span><span class="num">402</span></div>
+        <div class="row" title="106 retours = 26.4 %"><span class="name">Retours totaux</span><span class="track"><span class="fill" style="--c:var(--blue);--w:26.4%"></span></span><span class="num">106</span></div>
+        <div class="row" title="32 refus"><span class="name">Refus explicites</span><span class="track"><span class="fill" style="--c:var(--red);--w:8.0%"></span></span><span class="num">32</span></div>
+        <div class="row" title="14 redirections"><span class="name">Redirections</span><span class="track"><span class="fill" style="--c:var(--violet);--w:3.5%"></span></span><span class="num">14</span></div>
+        <div class="row" title="60 réponses"><span class="name">Réponses</span><span class="track"><span class="fill" style="--c:var(--green);--w:14.9%"></span></span><span class="num">60</span></div>
       </div>
       <div class="mini">
         <div class="m"><div class="v">62</div><div class="l">dépôts site carrière</div></div>
-        <div class="m"><div class="v">349</div><div class="l">e-mails journalisés</div></div>
-        <div class="m"><div class="v">74.9 %</div><div class="l">sans aucun retour</div></div>
-        <div class="m"><div class="v">7.1 %</div><div class="l">refus explicites</div></div>
+        <div class="m"><div class="v">356</div><div class="l">e-mails journalisés</div></div>
+        <div class="m"><div class="v">73.6 %</div><div class="l">sans aucun retour</div></div>
+        <div class="m"><div class="v">8.0 %</div><div class="l">refus explicites</div></div>
       </div>
     </div>
   </section>
@@ -261,20 +261,20 @@
 
     <div class="card">
       <div class="card-head"><h2>Qualité des adresses e-mail</h2></div>
-      <p class="note">477 lignes ont une adresse ; 128 n'en ont pas.</p>
+      <p class="note">488 lignes ont une adresse ; 121 n'en ont pas.</p>
       <div class="donut-wrap">
-        <div class="donut" role="img" aria-label="11.7 % nominatives, 67.1 % génériques, 21.2 % sans adresse"></div>
+        <div class="donut" role="img" aria-label="11.7 % nominatives, 68.5 % génériques, 19.9 % sans adresse"></div>
         <div class="donut-legend">
           <div class="dl"><span class="sw" style="background:var(--green)"></span> Nominatives <b>71</b> <span style="color:var(--muted)">11.7 %</span></div>
-          <div class="dl"><span class="sw" style="background:var(--indigo)"></span> Génériques <b>406</b> <span style="color:var(--muted)">67.1 %</span></div>
-          <div class="dl"><span class="sw" style="background:var(--slate)"></span> Sans adresse <b>128</b> <span style="color:var(--muted)">21.2 %</span></div>
+          <div class="dl"><span class="sw" style="background:var(--indigo)"></span> Génériques <b>417</b> <span style="color:var(--muted)">68.5 %</span></div>
+          <div class="dl"><span class="sw" style="background:var(--slate)"></span> Sans adresse <b>121</b> <span style="color:var(--muted)">19.9 %</span></div>
         </div>
       </div>
       <div class="mini">
-        <div class="m"><div class="v">459</div><div class="l">domaines distincts</div></div>
+        <div class="m"><div class="v">470</div><div class="l">domaines distincts</div></div>
         <div class="m"><div class="v">23</div><div class="l">adresses en échec</div></div>
-        <div class="m"><div class="v">4.8 %</div><div class="l">taux de bounce</div></div>
-        <div class="m"><div class="v">128</div><div class="l">à traiter en portail</div></div>
+        <div class="m"><div class="v">4.7 %</div><div class="l">taux de bounce</div></div>
+        <div class="m"><div class="v">121</div><div class="l">à traiter en portail</div></div>
       </div>
     </div>
   </section>
@@ -283,7 +283,7 @@
     <div class="card-head">
       <h2>Rythme d'envoi</h2>
       <div class="head-actions">
-        <span class="pill" id="fenetre">278 contacts du 14/11 au 20/11 · 66 %</span>
+        <span class="pill" id="fenetre">285 contacts du 14/11 au 21/11 · 66 %</span>
         <select class="semaine" id="semaine" aria-label="Choisir une semaine"></select>
       </div>
     </div>
@@ -334,7 +334,7 @@
     <div class="card">
       <div class="card-head">
         <h2>Profils visés</h2>
-        <span class="pill">605 lignes</span>
+        <span class="pill">609 lignes</span>
       </div>
       <p class="note"> Colonne « Profil » de l'Excel.</p>
       <div class="rows" id="jobRows"></div>
@@ -345,13 +345,13 @@
   <section class="alerts">
     <div class="alert" style="--accent:var(--red)">
       <div class="a-t">Relances</div>
-      <div class="a-v">96</div>
+      <div class="a-v">123</div>
       <div class="a-d">à envoyer (délai 7 j), dont 45 sans retour depuis plus de 14 j. Dates de relance enregistrées : 0.</div>
     </div>
     <div class="alert" style="--accent:var(--amber)">
       <div class="a-t">Formulaire</div>
-      <div class="a-v">143</div>
-      <div class="a-d">entreprises sans e-mail (128) ou ayant redirigé vers leur site carrière (15) : canal à suivre.</div>
+      <div class="a-v">135</div>
+      <div class="a-d">entreprises sans e-mail (121) ou ayant redirigé vers leur site carrière (14) : canal à suivre.</div>
     </div>
     <div class="alert" style="--accent:var(--violet)">
       <div class="a-t">Contacts</div>
@@ -360,7 +360,7 @@
     </div>
     <div class="alert" style="--accent:var(--blue)">
       <div class="a-t">Données</div>
-      <div class="a-v">260</div>
+      <div class="a-v">263</div>
       <div class="a-d">lignes de bounce pour 23 adresses réelles : doublons à dédupliquer.</div>
     </div>
   </section>
@@ -375,11 +375,11 @@
 </div>
 
 <script>
-  const statuses = [{"t": "Envoyé", "n": 275, "c": "var(--indigo)"}, {"t": "À vérifier", "n": 93, "c": "var(--amber)"}, {"t": "Prêt", "n": 62, "c": "var(--green)"}, {"t": "Réponse", "n": 56, "c": "var(--blue)"}, {"t": "Abandon", "n": 46, "c": "color-mix(in srgb,var(--muted) 45%,transparent)"}, {"t": "Refus", "n": 28, "c": "var(--red)"}, {"t": "À préparer", "n": 27, "c": "var(--slate)"}, {"t": "Redirection", "n": 15, "c": "var(--violet)"}, {"t": "Piste demandée", "n": 2, "c": "var(--cyan)"}, {"t": "A préparer", "n": 1, "c": "var(--slate)"}];
-  const channels = [{"t": "Autre", "n": 214, "s": 62, "r": 18, "p": 29.032258064516128}, {"t": "Site carrière entreprise", "n": 182, "s": 111, "r": 38, "p": 34.234234234234236}, {"t": "Recherche web (adresse officielle)", "n": 86, "s": 42, "r": 14, "p": 33.333333333333336}, {"t": "Agrégateurs / job boards", "n": 53, "s": 21, "r": 9, "p": 42.857142857142854}, {"t": "LinkedIn", "n": 30, "s": 16, "r": 5, "p": 31.25}, {"t": "Hunter.io", "n": 28, "s": 16, "r": 11, "p": 68.75}, {"t": "Portails universitaires", "n": 12, "s": 7, "r": 4, "p": 57.142857142857146}];
-  const cities = [{"t": "Berlin", "n": 120, "s": 62, "r": 15, "p": 24.193548387096776}, {"t": "Munich", "n": 79, "s": 31, "r": 10, "p": 32.25806451612903}, {"t": "Cologne", "n": 39, "s": 20, "r": 12, "p": 60.0}, {"t": "(vide)", "n": 25, "s": 14, "r": 5, "p": 35.714285714285715}, {"t": "Karlsruhe", "n": 22, "s": 8, "r": 7, "p": 87.5}, {"t": "Stuttgart", "n": 18, "s": 6, "r": 5, "p": 83.33333333333333}, {"t": "Dresden", "n": 18, "s": 14, "r": 3, "p": 21.428571428571427}, {"t": "Hamburg", "n": 18, "s": 5, "r": 4, "p": 80.0}, {"t": "Frankfurt", "n": 17, "s": 8, "r": 5, "p": 62.5}];
-  const jobs = [{"t": "Profil web", "n": 345}, {"t": "Profil data", "n": 247}, {"t": "Mixte / vide", "n": 13}];
-  const days = [{"d": "31/08", "mail": 5, "form": 0, "lien": 0, "n": 5, "w": "31/08"}, {"d": "01/09", "mail": 2, "form": 0, "lien": 0, "n": 2, "w": "31/08"}, {"d": "14/09", "mail": 0, "form": 5, "lien": 0, "n": 5, "w": "14/09"}, {"d": "05/10", "mail": 34, "form": 0, "lien": 0, "n": 34, "w": "05/10"}, {"d": "10/10", "mail": 13, "form": 0, "lien": 0, "n": 13, "w": "05/10"}, {"d": "03/11", "mail": 0, "form": 1, "lien": 0, "n": 1, "w": "02/11"}, {"d": "11/11", "mail": 50, "form": 0, "lien": 0, "n": 50, "w": "09/11"}, {"d": "12/11", "mail": 35, "form": 0, "lien": 0, "n": 35, "w": "09/11"}, {"d": "14/11", "mail": 45, "form": 3, "lien": 0, "n": 48, "w": "09/11"}, {"d": "15/11", "mail": 33, "form": 4, "lien": 1, "n": 38, "w": "09/11"}, {"d": "16/11", "mail": 36, "form": 0, "lien": 0, "n": 36, "w": "16/11"}, {"d": "17/11", "mail": 22, "form": 26, "lien": 4, "n": 52, "w": "16/11"}, {"d": "18/11", "mail": 54, "form": 21, "lien": 0, "n": 75, "w": "16/11"}, {"d": "19/11", "mail": 20, "form": 1, "lien": 1, "n": 22, "w": "16/11"}, {"d": "20/11", "mail": 0, "form": 0, "lien": 7, "n": 7, "w": "16/11"}];
+  const statuses = [{"t": "Envoyé", "n": 275, "c": "var(--indigo)"}, {"t": "À vérifier", "n": 93, "c": "var(--amber)"}, {"t": "Réponse", "n": 60, "c": "var(--blue)"}, {"t": "Prêt", "n": 59, "c": "var(--green)"}, {"t": "Abandon", "n": 46, "c": "color-mix(in srgb,var(--muted) 45%,transparent)"}, {"t": "Refus", "n": 32, "c": "var(--red)"}, {"t": "À préparer", "n": 27, "c": "var(--slate)"}, {"t": "Redirection", "n": 14, "c": "var(--violet)"}, {"t": "Piste demandée", "n": 2, "c": "var(--cyan)"}, {"t": "A préparer", "n": 1, "c": "var(--slate)"}];
+  const channels = [{"t": "Autre", "n": 218, "s": 68, "r": 19, "p": 27.941176470588236}, {"t": "Site carrière entreprise", "n": 182, "s": 108, "r": 41, "p": 37.96296296296296}, {"t": "Recherche web (adresse officielle)", "n": 86, "s": 40, "r": 16, "p": 40.0}, {"t": "Agrégateurs / job boards", "n": 53, "s": 21, "r": 9, "p": 42.857142857142854}, {"t": "LinkedIn", "n": 30, "s": 16, "r": 5, "p": 31.25}, {"t": "Hunter.io", "n": 28, "s": 16, "r": 11, "p": 68.75}, {"t": "Portails universitaires", "n": 12, "s": 6, "r": 5, "p": 83.33333333333333}];
+  const cities = [{"t": "Berlin", "n": 120, "s": 63, "r": 15, "p": 23.80952380952381}, {"t": "Munich", "n": 79, "s": 32, "r": 10, "p": 31.25}, {"t": "Cologne", "n": 39, "s": 20, "r": 12, "p": 60.0}, {"t": "(vide)", "n": 25, "s": 13, "r": 6, "p": 46.15384615384615}, {"t": "Karlsruhe", "n": 22, "s": 8, "r": 7, "p": 87.5}, {"t": "Hamburg", "n": 20, "s": 5, "r": 4, "p": 80.0}, {"t": "Stuttgart", "n": 18, "s": 6, "r": 5, "p": 83.33333333333333}, {"t": "Dresden", "n": 18, "s": 13, "r": 4, "p": 30.76923076923077}, {"t": "Frankfurt", "n": 17, "s": 7, "r": 6, "p": 85.71428571428571}];
+  const jobs = [{"t": "Profil web", "n": 348}, {"t": "Profil data", "n": 248}, {"t": "Mixte / vide", "n": 13}];
+  const days = [{"d": "31/08", "mail": 5, "form": 0, "lien": 0, "n": 5, "w": "31/08"}, {"d": "01/09", "mail": 2, "form": 0, "lien": 0, "n": 2, "w": "31/08"}, {"d": "14/09", "mail": 0, "form": 5, "lien": 0, "n": 5, "w": "14/09"}, {"d": "05/10", "mail": 34, "form": 0, "lien": 0, "n": 34, "w": "05/10"}, {"d": "10/10", "mail": 13, "form": 0, "lien": 0, "n": 13, "w": "05/10"}, {"d": "03/11", "mail": 0, "form": 1, "lien": 0, "n": 1, "w": "02/11"}, {"d": "11/11", "mail": 50, "form": 0, "lien": 0, "n": 50, "w": "09/11"}, {"d": "12/11", "mail": 35, "form": 0, "lien": 0, "n": 35, "w": "09/11"}, {"d": "14/11", "mail": 45, "form": 3, "lien": 0, "n": 48, "w": "09/11"}, {"d": "15/11", "mail": 33, "form": 4, "lien": 1, "n": 38, "w": "09/11"}, {"d": "16/11", "mail": 36, "form": 0, "lien": 0, "n": 36, "w": "16/11"}, {"d": "17/11", "mail": 22, "form": 26, "lien": 4, "n": 52, "w": "16/11"}, {"d": "18/11", "mail": 54, "form": 21, "lien": 0, "n": 75, "w": "16/11"}, {"d": "19/11", "mail": 20, "form": 1, "lien": 1, "n": 22, "w": "16/11"}, {"d": "20/11", "mail": 0, "form": 0, "lien": 7, "n": 7, "w": "16/11"}, {"d": "21/11", "mail": 7, "form": 0, "lien": 0, "n": 7, "w": "16/11"}];
 
   const $ = (id) => document.getElementById(id);
   const totalStatus = statuses.reduce((a, b) => a + b.n, 0);
@@ -437,7 +437,7 @@
     const total = visibles.reduce((a, d) => a + d.n, 0);
     $("fenetre").textContent = choix
       ? `${total} contacts — semaine du ${choix}`
-      : "278 contacts du 14/11 au 20/11 · 66 %";
+      : "285 contacts du 14/11 au 21/11 · 66 %";
   }
   semaine.addEventListener("change", rendreRythme);
   rendreRythme();
