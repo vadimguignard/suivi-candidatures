@@ -101,7 +101,7 @@
   /* ---------- donut ---------- */
   .donut-wrap{display:flex;align-items:center;gap:22px}
   .donut{width:150px;height:150px;border-radius:50%;flex:none;position:relative;
-    background:conic-gradient(var(--green) 0 11.66%, var(--indigo) 11.66% 80.13%, var(--slate) 80.13% 100%);
+    background:conic-gradient(var(--green) 0 11.66%, var(--indigo) 11.66% 78.82%, var(--slate) 78.82% 100%);
     -webkit-mask:radial-gradient(farthest-side,transparent 62%,#000 63%);
             mask:radial-gradient(farthest-side,transparent 62%,#000 63%);
   }
@@ -200,13 +200,13 @@
     </div>
     <div class="kpi" style="--bar:var(--green)">
       <div class="label">File de travail</div>
-      <div class="value">158</div>
-      <div class="hint">dont <b>110</b> avec une adresse e-mail</div>
+      <div class="value">150</div>
+      <div class="hint">dont <b>106</b> avec une adresse e-mail</div>
     </div>
     <div class="kpi" style="--bar:var(--amber)">
       <div class="label">Sans e-mail</div>
-      <div class="value">121</div>
-      <div class="hint">19.9 % → canal formulaire / portail</div>
+      <div class="value">129</div>
+      <div class="hint">21.2 % → canal formulaire / portail</div>
     </div>
     <div class="kpi" style="--bar:var(--red)">
       <div class="label">À relancer</div>
@@ -261,20 +261,20 @@
 
     <div class="card">
       <div class="card-head"><h2>Qualité des adresses e-mail</h2></div>
-      <p class="note">488 lignes ont une adresse ; 121 n'en ont pas.</p>
+      <p class="note">480 lignes ont une adresse ; 129 n'en ont pas.</p>
       <div class="donut-wrap">
-        <div class="donut" role="img" aria-label="11.7 % nominatives, 68.5 % génériques, 19.9 % sans adresse"></div>
+        <div class="donut" role="img" aria-label="11.7 % nominatives, 67.2 % génériques, 21.2 % sans adresse"></div>
         <div class="donut-legend">
           <div class="dl"><span class="sw" style="background:var(--green)"></span> Nominatives <b>71</b> <span style="color:var(--muted)">11.7 %</span></div>
-          <div class="dl"><span class="sw" style="background:var(--indigo)"></span> Génériques <b>417</b> <span style="color:var(--muted)">68.5 %</span></div>
-          <div class="dl"><span class="sw" style="background:var(--slate)"></span> Sans adresse <b>121</b> <span style="color:var(--muted)">19.9 %</span></div>
+          <div class="dl"><span class="sw" style="background:var(--indigo)"></span> Génériques <b>409</b> <span style="color:var(--muted)">67.2 %</span></div>
+          <div class="dl"><span class="sw" style="background:var(--slate)"></span> Sans adresse <b>129</b> <span style="color:var(--muted)">21.2 %</span></div>
         </div>
       </div>
       <div class="mini">
         <div class="m"><div class="v">470</div><div class="l">domaines distincts</div></div>
         <div class="m"><div class="v">23</div><div class="l">adresses en échec</div></div>
-        <div class="m"><div class="v">4.7 %</div><div class="l">taux de bounce</div></div>
-        <div class="m"><div class="v">121</div><div class="l">à traiter en portail</div></div>
+        <div class="m"><div class="v">4.8 %</div><div class="l">taux de bounce</div></div>
+        <div class="m"><div class="v">129</div><div class="l">à traiter en portail</div></div>
       </div>
     </div>
   </section>
@@ -350,8 +350,8 @@
     </div>
     <div class="alert" style="--accent:var(--amber)">
       <div class="a-t">Formulaire</div>
-      <div class="a-v">135</div>
-      <div class="a-d">entreprises sans e-mail (121) ou ayant redirigé vers leur site carrière (14) : canal à suivre.</div>
+      <div class="a-v">143</div>
+      <div class="a-d">entreprises sans e-mail (129) ou ayant redirigé vers leur site carrière (14) : canal à suivre.</div>
     </div>
     <div class="alert" style="--accent:var(--violet)">
       <div class="a-t">Contacts</div>
@@ -375,7 +375,7 @@
 </div>
 
 <script>
-  const statuses = [{"t": "Envoyé", "n": 298, "c": "var(--indigo)"}, {"t": "À vérifier", "n": 93, "c": "var(--amber)"}, {"t": "Réponse", "n": 60, "c": "var(--blue)"}, {"t": "Abandon", "n": 46, "c": "color-mix(in srgb,var(--muted) 45%,transparent)"}, {"t": "Prêt", "n": 36, "c": "var(--green)"}, {"t": "Refus", "n": 32, "c": "var(--red)"}, {"t": "À préparer", "n": 27, "c": "var(--slate)"}, {"t": "Redirection", "n": 14, "c": "var(--violet)"}, {"t": "Piste demandée", "n": 2, "c": "var(--cyan)"}, {"t": "A préparer", "n": 1, "c": "var(--slate)"}];
+  const statuses = [{"t": "Envoyé", "n": 298, "c": "var(--indigo)"}, {"t": "À vérifier", "n": 85, "c": "var(--amber)"}, {"t": "Réponse", "n": 60, "c": "var(--blue)"}, {"t": "Abandon", "n": 55, "c": "color-mix(in srgb,var(--muted) 45%,transparent)"}, {"t": "Prêt", "n": 36, "c": "var(--green)"}, {"t": "Refus", "n": 32, "c": "var(--red)"}, {"t": "À préparer", "n": 27, "c": "var(--slate)"}, {"t": "Redirection", "n": 14, "c": "var(--violet)"}, {"t": "Piste demandée", "n": 2, "c": "var(--cyan)"}];
   const channels = [{"t": "Autre", "n": 218, "s": 91, "r": 19, "p": 20.87912087912088}, {"t": "Site carrière entreprise", "n": 182, "s": 108, "r": 41, "p": 37.96296296296296}, {"t": "Recherche web (adresse officielle)", "n": 86, "s": 40, "r": 16, "p": 40.0}, {"t": "Agrégateurs / job boards", "n": 53, "s": 21, "r": 9, "p": 42.857142857142854}, {"t": "LinkedIn", "n": 30, "s": 16, "r": 5, "p": 31.25}, {"t": "Hunter.io", "n": 28, "s": 16, "r": 11, "p": 68.75}, {"t": "Portails universitaires", "n": 12, "s": 6, "r": 5, "p": 83.33333333333333}];
   const cities = [{"t": "Berlin", "n": 120, "s": 68, "r": 15, "p": 22.058823529411764}, {"t": "Munich", "n": 79, "s": 33, "r": 10, "p": 30.303030303030305}, {"t": "Cologne", "n": 39, "s": 20, "r": 12, "p": 60.0}, {"t": "(vide)", "n": 25, "s": 13, "r": 6, "p": 46.15384615384615}, {"t": "Karlsruhe", "n": 22, "s": 8, "r": 7, "p": 87.5}, {"t": "Hamburg", "n": 20, "s": 7, "r": 4, "p": 57.142857142857146}, {"t": "Stuttgart", "n": 18, "s": 8, "r": 5, "p": 62.5}, {"t": "Dresden", "n": 18, "s": 14, "r": 4, "p": 28.571428571428573}, {"t": "Frankfurt", "n": 17, "s": 7, "r": 6, "p": 85.71428571428571}];
   const jobs = [{"t": "Profil web", "n": 348}, {"t": "Profil data", "n": 248}, {"t": "Mixte / vide", "n": 13}];
