@@ -199,7 +199,7 @@
     <div class="kpi" style="--bar:var(--violet)">
       <div class="label">Candidatures parties</div>
       <div class="value">586</div>
-      <div class="hint"><b>546</b> e-mails · <b>63</b> dépôts formulaire · entreprises distinctes dédupliquées</div>
+      <div class="hint"><b>558</b> e-mails · <b>63</b> dépôts formulaire · entreprises distinctes dédupliquées</div>
     </div>
     <div class="kpi" style="--bar:var(--blue)">
       <div class="label">Taux de retour</div>
@@ -218,8 +218,8 @@
     </div>
     <div class="kpi" style="--bar:var(--red)">
       <div class="label">À relancer</div>
-      <div class="value">245</div>
-      <div class="hint">dont <b>99</b> sans retour depuis 14 j</div>
+      <div class="value">28</div>
+      <div class="hint">dont <b>87</b> sans retour depuis 14 j</div>
     </div>
   </section>
 
@@ -254,15 +254,15 @@
       <div class="rows">
         <div class="row" title="586 entreprises contactées"><span class="name">Contactées</span><span class="track"><span class="fill" style="--c:var(--violet);--w:100%"></span></span><span class="num">586</span></div>
         <div class="row" title="165 retours = 28.2 %"><span class="name">Retours totaux</span><span class="track"><span class="fill" style="--c:var(--blue);--w:28.2%"></span></span><span class="num">165</span></div>
-        <div class="row" title="47 refus"><span class="name">Refus explicites</span><span class="track"><span class="fill" style="--c:var(--red);--w:8.0%"></span></span><span class="num">47</span></div>
+        <div class="row" title="48 refus"><span class="name">Refus explicites</span><span class="track"><span class="fill" style="--c:var(--red);--w:8.2%"></span></span><span class="num">48</span></div>
         <div class="row" title="23 redirections"><span class="name">Redirections</span><span class="track"><span class="fill" style="--c:var(--violet);--w:3.9%"></span></span><span class="num">23</span></div>
-        <div class="row" title="95 réponses"><span class="name">Réponses</span><span class="track"><span class="fill" style="--c:var(--green);--w:16.2%"></span></span><span class="num">95</span></div>
+        <div class="row" title="94 réponses"><span class="name">Réponses</span><span class="track"><span class="fill" style="--c:var(--green);--w:16.0%"></span></span><span class="num">94</span></div>
       </div>
       <div class="mini">
         <div class="m"><div class="v">63</div><div class="l">dépôts site carrière</div></div>
-        <div class="m"><div class="v">546</div><div class="l">e-mails journalisés</div></div>
+        <div class="m"><div class="v">558</div><div class="l">e-mails journalisés</div></div>
         <div class="m"><div class="v">71.8 %</div><div class="l">sans aucun retour</div></div>
-        <div class="m"><div class="v">8.0 %</div><div class="l">refus explicites</div></div>
+        <div class="m"><div class="v">8.2 %</div><div class="l">refus explicites</div></div>
       </div>
     </div>
   </section>
@@ -301,7 +301,7 @@
     <div class="card-head">
       <h2>Rythme d'envoi</h2>
       <div class="head-actions">
-        <span class="pill" id="fenetre">204 contacts du 20/11 au 27/11 · 33 %</span>
+        <span class="pill" id="fenetre">216 contacts du 20/11 au 27/11 · 34 %</span>
         <select class="semaine" id="semaine" aria-label="Choisir une semaine"></select>
       </div>
     </div>
@@ -363,8 +363,8 @@
   <section class="alerts">
     <div class="alert" style="--accent:var(--red)">
       <div class="a-t">Relances</div>
-      <div class="a-v">245</div>
-      <div class="a-d">à envoyer (délai 7 j), dont 99 sans retour depuis plus de 14 j. Dates de relance enregistrées : 0.</div>
+      <div class="a-v">28</div>
+      <div class="a-d">à envoyer (délai 21 j), dont 87 sans retour depuis plus de 14 j. Dates de relance enregistrées : 12.</div>
     </div>
     <div class="alert" style="--accent:var(--amber)">
       <div class="a-t">Formulaire</div>
@@ -393,11 +393,11 @@
 </div>
 
 <script>
-  const statuses = [{"t": "Envoyé", "n": 390, "c": "var(--indigo)"}, {"t": "À vérifier", "n": 107, "c": "var(--amber)"}, {"t": "Réponse", "n": 95, "c": "var(--blue)"}, {"t": "À préparer", "n": 57, "c": "var(--slate)"}, {"t": "Abandon", "n": 55, "c": "color-mix(in srgb,var(--muted) 45%,transparent)"}, {"t": "Refus", "n": 47, "c": "var(--red)"}, {"t": "Redirection", "n": 23, "c": "var(--violet)"}, {"t": "Prêt", "n": 3, "c": "var(--green)"}, {"t": "Piste demandée", "n": 2, "c": "var(--cyan)"}];
-  const channels = [{"t": "Autre", "n": 388, "s": 195, "r": 61, "p": 31.28205128205128}, {"t": "Site carrière entreprise", "n": 182, "s": 104, "r": 47, "p": 45.19230769230769}, {"t": "Recherche web (adresse officielle)", "n": 86, "s": 33, "r": 23, "p": 69.6969696969697}, {"t": "Agrégateurs / job boards", "n": 53, "s": 22, "r": 11, "p": 50.0}, {"t": "LinkedIn", "n": 30, "s": 16, "r": 5, "p": 31.25}, {"t": "Hunter.io", "n": 28, "s": 14, "r": 13, "p": 92.85714285714286}, {"t": "Portails universitaires", "n": 12, "s": 6, "r": 5, "p": 83.33333333333333}];
-  const cities = [{"t": "Berlin", "n": 155, "s": 88, "r": 20, "p": 22.727272727272727}, {"t": "Munich", "n": 98, "s": 45, "r": 11, "p": 24.444444444444443}, {"t": "Cologne", "n": 43, "s": 20, "r": 16, "p": 80.0}, {"t": "Hamburg", "n": 40, "s": 20, "r": 12, "p": 60.0}, {"t": "Karlsruhe", "n": 27, "s": 12, "r": 8, "p": 66.66666666666667}, {"t": "(vide)", "n": 25, "s": 11, "r": 8, "p": 72.72727272727273}, {"t": "Dresden", "n": 23, "s": 14, "r": 9, "p": 64.28571428571429}, {"t": "Stuttgart", "n": 22, "s": 10, "r": 6, "p": 60.0}, {"t": "Frankfurt", "n": 21, "s": 9, "r": 8, "p": 88.88888888888889}];
+  const statuses = [{"t": "Envoyé", "n": 378, "c": "var(--indigo)"}, {"t": "À vérifier", "n": 107, "c": "var(--amber)"}, {"t": "Réponse", "n": 94, "c": "var(--blue)"}, {"t": "À préparer", "n": 57, "c": "var(--slate)"}, {"t": "Abandon", "n": 55, "c": "color-mix(in srgb,var(--muted) 45%,transparent)"}, {"t": "Refus", "n": 48, "c": "var(--red)"}, {"t": "Redirection", "n": 23, "c": "var(--violet)"}, {"t": "Relancé 1", "n": 12, "c": "var(--amber)"}, {"t": "Prêt", "n": 3, "c": "var(--green)"}, {"t": "Piste demandée", "n": 2, "c": "var(--cyan)"}];
+  const channels = [{"t": "Autre", "n": 388, "s": 195, "r": 61, "p": 31.28205128205128}, {"t": "Site carrière entreprise", "n": 182, "s": 100, "r": 47, "p": 47.0}, {"t": "Recherche web (adresse officielle)", "n": 86, "s": 33, "r": 23, "p": 69.6969696969697}, {"t": "Agrégateurs / job boards", "n": 53, "s": 21, "r": 11, "p": 52.38095238095238}, {"t": "LinkedIn", "n": 30, "s": 9, "r": 5, "p": 55.55555555555556}, {"t": "Hunter.io", "n": 28, "s": 14, "r": 13, "p": 92.85714285714286}, {"t": "Portails universitaires", "n": 12, "s": 6, "r": 5, "p": 83.33333333333333}];
+  const cities = [{"t": "Berlin", "n": 155, "s": 82, "r": 20, "p": 24.390243902439025}, {"t": "Munich", "n": 98, "s": 43, "r": 11, "p": 25.58139534883721}, {"t": "Cologne", "n": 43, "s": 19, "r": 16, "p": 84.21052631578948}, {"t": "Hamburg", "n": 40, "s": 20, "r": 12, "p": 60.0}, {"t": "Karlsruhe", "n": 27, "s": 12, "r": 8, "p": 66.66666666666667}, {"t": "(vide)", "n": 25, "s": 11, "r": 8, "p": 72.72727272727273}, {"t": "Dresden", "n": 23, "s": 14, "r": 9, "p": 64.28571428571429}, {"t": "Stuttgart", "n": 22, "s": 10, "r": 6, "p": 60.0}, {"t": "Frankfurt", "n": 21, "s": 9, "r": 8, "p": 88.88888888888889}];
   const jobs = [{"t": "Profil web", "n": 405}, {"t": "Profil data", "n": 264}, {"t": "Mixte / vide", "n": 110}];
-  const days = [{"d": "31/08", "mail": 5, "form": 0, "lien": 0, "n": 5, "w": "31/08"}, {"d": "01/09", "mail": 2, "form": 0, "lien": 0, "n": 2, "w": "31/08"}, {"d": "14/09", "mail": 0, "form": 5, "lien": 0, "n": 5, "w": "14/09"}, {"d": "05/10", "mail": 34, "form": 0, "lien": 0, "n": 34, "w": "05/10"}, {"d": "10/10", "mail": 13, "form": 0, "lien": 0, "n": 13, "w": "05/10"}, {"d": "03/11", "mail": 0, "form": 1, "lien": 0, "n": 1, "w": "02/11"}, {"d": "11/11", "mail": 50, "form": 0, "lien": 0, "n": 50, "w": "09/11"}, {"d": "12/11", "mail": 35, "form": 0, "lien": 0, "n": 35, "w": "09/11"}, {"d": "14/11", "mail": 45, "form": 3, "lien": 0, "n": 48, "w": "09/11"}, {"d": "15/11", "mail": 33, "form": 4, "lien": 1, "n": 38, "w": "09/11"}, {"d": "16/11", "mail": 36, "form": 0, "lien": 0, "n": 36, "w": "16/11"}, {"d": "17/11", "mail": 22, "form": 26, "lien": 4, "n": 52, "w": "16/11"}, {"d": "18/11", "mail": 54, "form": 21, "lien": 0, "n": 75, "w": "16/11"}, {"d": "19/11", "mail": 20, "form": 2, "lien": 1, "n": 23, "w": "16/11"}, {"d": "20/11", "mail": 0, "form": 0, "lien": 7, "n": 7, "w": "16/11"}, {"d": "21/11", "mail": 36, "form": 0, "lien": 0, "n": 36, "w": "16/11"}, {"d": "22/11", "mail": 35, "form": 0, "lien": 0, "n": 35, "w": "16/11"}, {"d": "23/11", "mail": 21, "form": 0, "lien": 0, "n": 21, "w": "23/11"}, {"d": "24/11", "mail": 23, "form": 0, "lien": 0, "n": 23, "w": "23/11"}, {"d": "25/11", "mail": 30, "form": 0, "lien": 0, "n": 30, "w": "23/11"}, {"d": "26/11", "mail": 35, "form": 0, "lien": 0, "n": 35, "w": "23/11"}, {"d": "27/11", "mail": 17, "form": 0, "lien": 0, "n": 17, "w": "23/11"}];
+  const days = [{"d": "31/08", "mail": 5, "form": 0, "lien": 0, "n": 5, "w": "31/08"}, {"d": "01/09", "mail": 2, "form": 0, "lien": 0, "n": 2, "w": "31/08"}, {"d": "14/09", "mail": 0, "form": 5, "lien": 0, "n": 5, "w": "14/09"}, {"d": "05/10", "mail": 34, "form": 0, "lien": 0, "n": 34, "w": "05/10"}, {"d": "10/10", "mail": 13, "form": 0, "lien": 0, "n": 13, "w": "05/10"}, {"d": "03/11", "mail": 0, "form": 1, "lien": 0, "n": 1, "w": "02/11"}, {"d": "11/11", "mail": 50, "form": 0, "lien": 0, "n": 50, "w": "09/11"}, {"d": "12/11", "mail": 35, "form": 0, "lien": 0, "n": 35, "w": "09/11"}, {"d": "14/11", "mail": 45, "form": 3, "lien": 0, "n": 48, "w": "09/11"}, {"d": "15/11", "mail": 33, "form": 4, "lien": 1, "n": 38, "w": "09/11"}, {"d": "16/11", "mail": 36, "form": 0, "lien": 0, "n": 36, "w": "16/11"}, {"d": "17/11", "mail": 22, "form": 26, "lien": 4, "n": 52, "w": "16/11"}, {"d": "18/11", "mail": 54, "form": 21, "lien": 0, "n": 75, "w": "16/11"}, {"d": "19/11", "mail": 20, "form": 2, "lien": 1, "n": 23, "w": "16/11"}, {"d": "20/11", "mail": 0, "form": 0, "lien": 7, "n": 7, "w": "16/11"}, {"d": "21/11", "mail": 36, "form": 0, "lien": 0, "n": 36, "w": "16/11"}, {"d": "22/11", "mail": 35, "form": 0, "lien": 0, "n": 35, "w": "16/11"}, {"d": "23/11", "mail": 21, "form": 0, "lien": 0, "n": 21, "w": "23/11"}, {"d": "24/11", "mail": 23, "form": 0, "lien": 0, "n": 23, "w": "23/11"}, {"d": "25/11", "mail": 30, "form": 0, "lien": 0, "n": 30, "w": "23/11"}, {"d": "26/11", "mail": 35, "form": 0, "lien": 0, "n": 35, "w": "23/11"}, {"d": "27/11", "mail": 29, "form": 0, "lien": 0, "n": 29, "w": "23/11"}];
 
   const $ = (id) => document.getElementById(id);
   const totalStatus = statuses.reduce((a, b) => a + b.n, 0);
@@ -455,7 +455,7 @@
     const total = visibles.reduce((a, d) => a + d.n, 0);
     $("fenetre").textContent = choix
       ? `${total} contacts — semaine du ${choix}`
-      : "204 contacts du 20/11 au 27/11 · 33 %";
+      : "216 contacts du 20/11 au 27/11 · 34 %";
   }
   semaine.addEventListener("change", rendreRythme);
   rendreRythme();
